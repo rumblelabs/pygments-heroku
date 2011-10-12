@@ -1,4 +1,4 @@
-Pygments==1.4dev-20111012
+Pygments==1.4
 Flask==0.7.2
 ElementTree==1.2.6-20050316
 Markdown==2.0.3
