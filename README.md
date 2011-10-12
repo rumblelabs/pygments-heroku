@@ -1,6 +1,6 @@
-# heroku-pygments
+# pygments-heroku
 
-[http://pygmentize.herokuapp.com](http://pygmentize.herokuapp.com) is an HTTP API for [Pygments](http://pygments.org/).
+[http://pygmentize.herokuapp.com](http://pygmentize.herokuapp.com) is an HTTP API for the syntax highligher [Pygments](http://pygments.org/).
 
 * Runs on [Heroku](http://heroku.com) (Cedar)
 * Uses **pygments** version **1.4**
@@ -41,7 +41,7 @@ The **response** body will contain the *pygmentized* HTML.
 
 ### Usage
 
-    git@github.com:rumblelabs/heroku-pygments.git
+    git@github.com:rumblelabs/pygments-heroku.git
     cd heroku-pygments
     virtualenv --no-site-packages .
     source bin/activate
