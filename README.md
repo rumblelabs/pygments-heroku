@@ -1,29 +1,27 @@
-## Pygments-Heroku ##
+# heroku-pygments
 
-http://pygments.herokuapp.com is an HTTP API for [Pygments](http://pygments.org/).
+[http://pygmentize.herokuapp.com](http://pygmentize.herokuapp.com) is an HTTP API for [Pygments](http://pygments.org/).
 
 * Runs on [Heroku](http://heroku.com) (Cedar)
-* Upgraded to use the latest dev build of **pygments**.
+* Uses **pygments** version **1.4**
 * Uses PIP to manage dependencies (as per the [Heroku Python Tutorial](http://devcenter.heroku.com/articles/python))
 
-Inspired by [trevorturk/pygments](http://github.com/trevorturk/pygments).
+## API
 
-## Usage ##
+Issue a `HTTP POST` request to the service running at `http://pygmentize.herokuapp.com`
 
-Issue a `HTTP POST` request to the service running at `http://pygments.herokuapp.com`
-
-    **POST**: http://pygments.herokuapp.com
+    **POST**: http://pygmentize.herokuapp.com
               PARAMS {:lang => "html", :code => "<h1>Hello World</h1>"}
 
 The **response** body will contain the *pygmentized* HTML. 
 
-## Examples
+### Examples
 
-### curl
+#### curl
 
-    curl --data "lang=html&code=<h1>Hello World</h1>" http://pygments.herokuapp.com
+    curl --data "lang=html&code=<h1>Hello World</h1>" http://pygmentize.herokuapp.com
 
-### Ruby
+#### Ruby
 
     require 'net/http'
     require 'uri'
@@ -31,9 +29,34 @@ The **response** body will contain the *pygmentized* HTML.
     lang = 'python'
     code = 'print "Hello World"'
 
-    request = Net::HTTP.post_form(URI.parse('http://pygments.appspot.com/'), {'lang'=>lang, 'code'=>code})
+    request = Net::HTTP.post_form(URI.parse('http://pygmentize.herokuapp.com'), {'lang'=>lang, 'code'=>code})
     puts request.body
 
+## Server
+
+### Dependencies
+
+    easy_install pip
+    pip install virtualenv
+
+### Usage
+
+    git@github.com:rumblelabs/heroku-pygments.git
+    cd heroku-pygments
+    virtualenv --no-site-packages .
+    source bin/activate
+    bin/pip install -r requirements.txt
+    python app.py
+
+### Run on Heroku
+
+    heroku create my-pygments-app --stack cedar
+    git push heroku
+    heroku open
+
+## Credits
+
+Inspired by [trevorturk/pygments](http://github.com/trevorturk/pygments).
 
 ## License
 
